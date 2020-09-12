@@ -61,8 +61,12 @@ jobs:
     - name: Build container image
       uses: docker/build-push-action@v2
       with:
-        username: ${{github.actor}}
-        password: ${{secrets.GITHUB_TOKEN}}
-        registry: docker.pkg.github.com
-        repository: blackJack1982/github-actions-for-packages/tic-tac-toe
-        tag_with_sha: true
+        push: true
+        tags: blackJack1982/github-actions-for-packages/tic-tac-toe
+        secret: |
+          GIT_AUTH_TOKEN=${{ github.token }}
+#        username: ${{github.actor}}
+#        password: ${{secrets.GITHUB_TOKEN}}
+#        registry: docker.pkg.github.com
+#        repository: blackJack1982/github-actions-for-packages/tic-tac-toe
+#        tag_with_sha: true
